@@ -38,5 +38,30 @@ const adminService = {
         }catch (error) {
             throw new Error ('Ocorreu um erro ao buscar os Admins')
         }
+    },
+    delete: async (id) => {
+        try {
+            const admin = await Admin.findByPk(id);
+            if (!admin) {
+                return null;
+            }
+            await admin.destroy();
+            return admin;
+        }catch (error) {
+            throw new Error('Ocorreu um erro ao deletar Admin')
+        }
+    },
+    getByEmail: async (email) => {
+        try {
+            const admin = await Admin.findOne({where: { email }});
+            if(!admin) {
+                return null;
+            }
+            return admin;
+        } catch (error) {
+            throw new Error('Ocorreu um erro ao buscar Admin por email');
+        }
     }
 }
+
+module.exports = adminService;
