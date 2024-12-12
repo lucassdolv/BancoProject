@@ -68,9 +68,18 @@ const adminController = {
             const admin = await adminService.delete(req.params.id);
             if (!admin) {
                 return res.status(400).json({
-                    
+                    msg: 'Admin não encontrado'
                 })
             }
+            return res.status(200).json({
+                msg: 'Admin deletado com sucesso'
+            });
+        }catch (error) {
+            return res.status(500).json({
+                msg: 'Ocorreu um erro no servidor'
+            })
         }
     }
  }
+
+ module.exports = adminController;
