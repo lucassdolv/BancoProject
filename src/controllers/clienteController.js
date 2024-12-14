@@ -1,4 +1,3 @@
-const { getAll } = require("../services/adminService");
 const clienteService = require("../services/clienteService")
 
 const clienteController = {
@@ -83,4 +82,4 @@ const clienteController = {
     }
 }
 
-module.exports = clienteService;
+module.exports = clienteController;

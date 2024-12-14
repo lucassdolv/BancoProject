@@ -1,7 +1,7 @@
 const { DataTypes } = require(' sequelize ');
 const sequelize = require('../config/database');
 
-const Transacao = sequelize.define('Transacoes', {
+const Transacoes = sequelize.define('Transacoes', {
     contaId: {
         type: DataTypes.INTEGER,
         allowNull: false,
@@ -23,7 +23,9 @@ const Transacao = sequelize.define('Transacoes', {
         allowNull: false
     },
     dataTransicao: {
-        type: DataTypes.DATE,
+        type: DataTypes.STRING,
         allowNull: false
     }
 })
+
+module.exports = Transacoes;

@@ -12,6 +12,6 @@ clienteRoutes.delete('/:id',validateCliente, validateClienteId, clienteControlle
 
 clienteRoutes.get('/:id', validateClienteId, clienteController.getOne); 
 
-clienteRoutes.get('/', clienteController.getall); 
+clienteRoutes.get('/', clienteController.getAll); 
 
 module.exports = clienteRoutes;

@@ -5,7 +5,7 @@ const adminService = {
         try {
             return await Admin.create(admin);
         } catch (error) {
-            throw new Error('Ocorreu um erro ao Criar Admin');
+            throw new Error('Ocorreu um erro ao criar Admin');
         }
     },
     update: async (id, adminToUpdate) => {
@@ -18,7 +18,7 @@ const adminService = {
             await admin.save();
             return admin;
         } catch (error) {
-            throw new Error('Ocorreu um erro ao Atualizar Admin');
+            throw new Error('Ocorreu um erro ao atualizar Admin');
         }
     },
     getById: async (id) => {

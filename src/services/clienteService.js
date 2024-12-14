@@ -1,5 +1,4 @@
 const Cliente = require('../models/clientes');
-const { update } = require('./adminService');
 
 const clienteService = {
     create: async (cliente) => {

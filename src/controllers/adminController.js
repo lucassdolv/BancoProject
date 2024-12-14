@@ -79,7 +79,34 @@ const adminController = {
                 msg: 'Ocorreu um erro no servidor'
             })
         }
-    }
+    },
+    login: async (req, res) => {
+        const { email, senha } = req.body;
+        try {
+            const admin = await adminService.getByEmail(email);
+            if (!admin) {
+                return res.status(400).json({ msg: "Email ou senha inválidos" });
+            }
+            const isPasswordValid = await bcrypt.compare(senha, admin.senha);
+            if (!isPasswordValid) {
+                return res.status(400).json({ msg: "Email ou senha inválidos" });
+            }
+
+            const token = jwt.sign(
+                { id: admin.id, email: admin.email }, 
+                JWT_SECRET, 
+                { expiresIn: "1h" }
+            );
+            return res.status(200).json({ 
+                msg: "Login bem-sucedido", 
+                token,
+                admin
+            });
+        } catch (error) {
+            console.error("Erro ao tentar fazer login:", error);
+            return res.status(500).json({ msg: "Erro no servidor ao tentar fazer login" });
+        }
+    },
  }
 
  module.exports = adminController;
